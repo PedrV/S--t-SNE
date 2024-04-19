@@ -2,6 +2,11 @@ from clusterSim import ClusterSim
 import pandas as pd
 import numpy as np
 
+'''
+Script used to generate three 3-D Distributions A,B and C using the ClusterSim class
+the script register the points in a CSV file and plot the distributions in 3-D
+'''
+
 covA1 = [
 	[ 1, 0, 0],
 	[ 0, 1, 0],
