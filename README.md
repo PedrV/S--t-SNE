@@ -43,7 +43,7 @@ After completing that, one can simply explore the functions on the avilable jupy
 
     > Our solution involves using the convex hulls obtained from clustering and dividing them into parts. Each partition will employ blind drift detection by exponential decay based on the number of iterations in S+t-SNE. This allows parts without new points during a period (given by exponential decay) to disappear, ensuring consistency. We parameterise the exponential decay with three parameters, $\alpha = 0.88$, $\beta = 1.6$ and $\eta = 0.01$, yielding $N(t) = \alpha e^{−t\eta+\beta}$ where $t$ is the number of iterations. This expression encapsulates our deﬁnition of drift. In this conﬁguration, a polygon in iteration 200 will have section x cut if said section does not receive points for more than $N(200)$ iterations.
 
-The version published in the conference should have everything corrected. We probably update the file in ArXiv soon. 
+The version published in the conference should have everything corrected. We will probably update the file in ArXiv soon. 
 
 - Better documentation for ECS will be added soon
 
