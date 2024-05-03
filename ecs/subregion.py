@@ -6,9 +6,10 @@ import numpy.typing as npt
 
 
 class SubRegion(ABC):
-    decay_iteration = 1 / 100
+    decay_iteration = 1 / 100  # eta
     decay_points = 1 / 100
-    alpha = 1
+    beta = 1.6
+    alpha = 0.88
 
     def __init__(self, centroid_x, centroid_y, min_x, max_x):
         self.centroid_x = centroid_x
@@ -18,7 +19,7 @@ class SubRegion(ABC):
 
     @final
     def consult_iteration_consensus(self, iteration):
-        return SubRegion.alpha * np.exp(-iteration * SubRegion.decay_iteration) + 1
+        return SubRegion.alpha * np.exp(-iteration * SubRegion.decay_iteration + SubRegion.beta) + 1
 
     @final
     def consult_point_consensus(self, iteration):

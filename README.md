@@ -1,12 +1,12 @@
 # S+t-SNE
 
-#### S+t-SNE - Bringing dimensionality reduction to data streams. - (Paper available soon)
+#### [S+t-SNE - Bringing dimensionality reduction to data streams](https://arxiv.org/abs/2403.17643)
 
 We present S+t-SNE, an adaptation of the t-SNE algorithm designed to handle infinite data streams.
 The core idea behind S+t-SNE is to update the t-SNE embedding incrementally as new data arrives, ensuring scalability and adaptability to handle streaming scenarios. By selecting the most important points at each step, the algorithm ensures scalability while keeping informative visualisations. Employing a blind method for drift management adjusts the embedding space, facilitating continuous visualisation of evolving data dynamics.
 Our experimental evaluations demonstrate the effectiveness and efficiency of S+t-SNE. The results highlight its ability to capture patterns in a streaming scenario. We hope our approach offers researchers and practitioners a real-time tool for understanding and interpreting high-dimensional data.
 
-**Contributors**: Pedro C. Vieira <pedrocvieira@fc.up.pt>, João P. Montrezol <joao.antunes@fc.up.pt>, João T. Vieira <up201905419@fc.up.pt>, João Gama <jgama@fep.up.pt>
+**Contributors**: Pedro C. Vieira[^1] <pedrocvieira@fc.up.pt>, João P. Montrezol <joao.antunes@fc.up.pt>, João T. Vieira <up201905419@fc.up.pt>, João Gama <jgama@fep.up.pt>
 
 
 ## Organization
@@ -38,5 +38,19 @@ Firstly, go to this drive [folder](https://drive.google.com/drive/folders/1saFrx
 
 After completing that, one can simply explore the functions on the avilable jupyter notebooks to generate the plots with the available CSVs on the `Results/` folder. To generate the CSVs by yourself, check if the file `driftingPoints_shuffle.csv` is available on the `Demo/` folder and SKLearn library is available, afterwards one can personalize the test parameters on the file `Demo_Params.py`, and test routines on the file `Run.py`. Finally run the `Run.py` scripts to get new versions of the CSVs at the `Results/` folder. 
 
-*(full code documentation will be added soon ...)*
+## Notes
+- In the version of the paper freely available in ArXiv, the fourth paragraph of section 3.3 - Handling Drift is poorly worded. A better description would be:
 
+    > Our solution involves using the convex hulls obtained from clustering and dividing them into parts. Each partition will employ blind drift detection by exponential decay based on the number of iterations in S+t-SNE. This allows parts without new points during a period (given by exponential decay) to disappear, ensuring consistency. We parameterise the exponential decay with three parameters, $\alpha = 0.88$, $\beta = 1.6$ and $\eta = 0.01$, yielding $N(t) = \alpha e^{−t\eta+\beta}$ where $t$ is the number of iterations. This expression encapsulates our deﬁnition of drift. In this conﬁguration, a polygon in iteration 200 will have section x cut if said section does not receive points for more than $N(200)$ iterations.
+
+The version published in the conference should have everything corrected. We will probably update the file in ArXiv soon. 
+
+- Better documentation for ECS will be added soon
+
+## Contributions
+
+- Feel free to improve the code!
+  
+- **If you have any questions do not hesitate to contact us (preferably the corresponding author) either by email or using GitHub functionalities!** :)
+
+[^1]: Corresponding Author
